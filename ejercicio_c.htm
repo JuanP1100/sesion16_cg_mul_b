@@ -59,7 +59,7 @@
       var arrowY = new THREE.ArrowHelper( y, origin, arrowSize, colorG );
       var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
       
-      var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
+      var material = new THREE.MeshPhongMaterial( { color : 0xff0000 } );
       var geometry = new THREE.ConeGeometry(1, 1, 10);
 
       // Create the final object to add to the scene
@@ -68,6 +68,7 @@
 
       geometry.rotateX(r);
       geometry.translate(0, 0, 0.5);
+      geometry.rotateZ(Math.PI/10);
 
       var coneObject = new THREE.Mesh( geometry, material );
       scene.add( coneObject );
@@ -77,6 +78,15 @@
 	  	scene.add( arrowX );	
 	  	scene.add( arrowY );	
 	  	scene.add( arrowZ );
+
+      var light = new THREE.PointLight(0xFFFFFF);
+	light.position.set(10, 10, 25);
+	scene.add(light);
+
+      var light = new THREE.PointLight(0xFFFFFF);
+	light.position.set(0, 0, -25);
+	scene.add(light);
+
             
 			//MOVER LA CÁMARA
 			camera.position.x = 0;
