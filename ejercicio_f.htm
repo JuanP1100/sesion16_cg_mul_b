@@ -27,7 +27,7 @@
             controls = new THREE.OrbitControls( camera, renderer.domElement );
 			
 			//ELEMENTOS DE ESCENA
-			var size = 0.000001;
+			var size = 0.0000001;
 			var arrowSize = 100;
 			var divisions = size;
 			var origin = new THREE.Vector3( 0, 0, 0 );
@@ -59,25 +59,27 @@
       var arrowY = new THREE.ArrowHelper( y, origin, arrowSize, colorG );
       var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
       
+
       var material = new THREE.MeshPhongMaterial( { color : 0xEE44AA } );
       var geometry = new THREE.SphereGeometry(1, 100, 100);
 
       // Create the final object to add to the scene
 
-      var g = 45
-      var r = (g * Math.PI)/180
+      var mesh = new THREE.Mesh( geometry, material );
+
+
+      var s = Math.sin(45)
+      var c = Math.cos(45)
 
       geometry.scale(0.5,0.5,3);
-
-      geometry.rotateY(r);
-      geometry.rotateZ(r);
-      //geometry.position( 0, 0, 0)
+      mesh.position.set( 1.95, 1.2, 1.95)
       
-      
+      geometry.rotateY(s)
+      geometry.rotateZ(c)
 
-      var coneObject = new THREE.Mesh( geometry, material );
-      scene.add( coneObject );
 
+
+      scene.add(mesh);
 
 
 	  	//AGREGAR A LA ESCENA
